@@ -1,0 +1,14 @@
+[Unit]
+Description=liquid soap daemon
+After=network.target
+
+[Service]
+#Type=forking
+#PIDFile=/home/wjrh/robo-dj-install/robo-dj.pid
+User=wjrh
+ExecStart=/home/wjrh/robo-dj-install/bin/robo-dj.liq
+Restart=always
+WorkingDirectory=/home/wjrh/robo-dj-install
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+song_log=/home/wjrh/robo-dj-install/log/songs.log
+
+# assign song artist and title variables
+artist=$1
+title=$2
+
+echo -e "[$(date)]\t$artist\t$title" >> $song_log

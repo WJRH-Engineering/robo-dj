@@ -1,21 +1,28 @@
 #!/usr/bin/liquidsoap
 
+set("log.file",true)
+set("log.file.path", "/home/wjrh/robo-dj-install/log/general.log")
+# set("init.daemon",true)
+# set("init.daemon.change_user",true)
+# set("init.daemon.change_user.group","wjrh")
+# set("init.daemon.change_user.user","wjrh")
+# set("init.daemon.pidfile",false)
+# set("init.daemon.pidfile.path","/home/wjrh/robo-dj-install/robodj.pid")
+
 %include "top_of_the_hour_detector.liq"
 %include "passwords.liq"
-
-set("log.file.path", "/home/wjrh/Desktop/robo-log.txt")
 
 def log_track(m) =
   artist = m["artist"]
   title = m["title"]
   
-  song = "Now Playing: #{title} - #{artist}"
-  
-  # use log to write to log
+  # write to stdout
+  song = "Now Playing: #{artist} - #{title}"
   print(song)
-  # asterix delimeted b/c who puts an * in anything (Artist, Songname)
-  song = "#{title}*#{artist}"
-  system("echo \"#{song} \" >> /home/wjrh/Desktop/SongLog")
+
+  # write to custom log script
+  system('./log-script "#{artist}" "#{title}"')
+
 end
 
 # Setup sources
@@ -78,7 +85,7 @@ output = fallback(track_sensitive=false,[
 # Used to feed audio into Axia console
 # This will change once the Linux Audio over IP Driver is purchased.
 # Then it will be used for in Engineering Room feedback
-out(output)
+output.pulseaudio(output)
 
 # Icecast output settings
 # Currently used to make robodj metadata accessible to the webserver

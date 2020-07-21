@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# install the program by putting all scripts where they are expected
+
+install_dir="/home/wjrh/robo-dj-install"
+mkdir -p $install_dir
+
+# install service file
+cp -r robodj.service /etc/systemd/system/robodj.service
+
+# make necessary files executable
+chmod +x robo-dj.liq
+chmod +x log-script
+
+# install binary files
+mkdir -p $install_dir/bin
+cp -r robo-dj.liq $install_dir/bin/robo-dj.liq
+cp -r passwords.liq $install_dir/bin/passwords.liq
+cp -r top_of_the_hour_detector.liq $install_dir/bin/top_of_the_hour_detector.liq
+cp -r log-script $install_dir/bin/log-script
+
+# set up log files
+mkdir -p $install_dir/log
+touch $install_dir/log/songs.log
+
+systemctl daemon-reload
+systemctl enable robodj
+systemctl start robodj
