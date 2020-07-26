@@ -1,9 +1,16 @@
 #!/bin/bash
 
-song_log=/home/wjrh/robo-dj-install/log/songs.log
+log_file=/home/wjrh/robo-dj-install/log/songs.log
+sql_server=10.8.0.14
 
 # assign song artist and title variables
 artist=$1
 title=$2
 
-echo -e "[$(date)]\t$artist\t$title" >> $song_log
+# append the new song info to the end of the log file
+echo -e "[$(date)]\t$artist\t$title" >> $log_file
+
+# insert the new song info into the remote database
+sql_string="INSERT INTO song_log (entity, title, artist) VALUES('robo-dj', '$title', '$artist');"
+
+psql -h $sql_server --no-password --quiet -c "$sql_string"

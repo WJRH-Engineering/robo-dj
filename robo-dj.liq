@@ -21,7 +21,7 @@ def log_track(m) =
   print(song)
 
   # write to custom log script
-  system('./log-script "#{artist}" "#{title}"')
+  system('/home/wjrh/robo-dj-install/bin/log-script "#{artist}" "#{title}"')
 
 end
 
