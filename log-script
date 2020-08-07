@@ -13,4 +13,5 @@ echo -e "[$(date)]\t$artist\t$title" >> $log_file
 # insert the new song info into the remote database
 sql_string="INSERT INTO song_log (entity, title, artist) VALUES('robo-dj', '$title', '$artist');"
 
-psql -h $sql_server --no-password --quiet -c "$sql_string"
+# Send the log command, give up if no response after 5 seconds
+timeout 5 psql -h $sql_server --no-password --quiet -c "$sql_string"

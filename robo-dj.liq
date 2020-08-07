@@ -100,3 +100,33 @@ output.icecast(%mp3,
 	mount="RoboDJ",
 	output
 )
+
+
+# Because the stream is down currently, with no way of getting it back up,
+# bypass the AXIA board in the studio and create the stream from here
+#output.icecast(%mp3,
+#	host="wjrh.org",
+#	port=8000,
+#	password=icecast_password,
+#	name="WJRH",
+#	description="WJRH 104.9FM - Lafayette College Radio Online at wjrh.org. This is the Robo DJ stream. If you really like WJRH but really don't like our human DJs, you might be robot. This is the stream for you.",
+#	genre="College Radio",
+#	url="wjrh.org",
+#	mount="WJRH",
+#	output
+#
+
+
+# Because the stream is down currently, with no way of getting it back up,
+# bypass the AXIA board in the studio and create the stream from here
+#output.icecast(%mp3,
+#	host="wjrh.org",
+#	port=8000,
+#	password=icecast_password,
+#	name="WJRH-Low",
+#	description="WJRH 104.9FM - Lafayette College Radio Online at wjrh.org. This is the Robo DJ stream. If you really like WJRH but really don't like our human DJs, you might be robot. This is the stream for you.",
+#	genre="College Radio",
+#	url="wjrh.org",
+#	mount="WJRHlow",
+#	output
+#)
