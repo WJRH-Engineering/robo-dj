@@ -1,0 +1,14 @@
+version: '3.0'
+services:
+
+  robodj:
+    image: savonet/liquidsoap:master
+    environment: ['TZ=America/NewYork']
+    volumes:
+      - ./main.liq:/src/main.liq
+      - ./liquidsoap-utils:/src/lib
+      - ./secrets:/secrets
+      - /home/connor/hd/Media/music/Music:/media/songs
+      - ./station-ids:/media/station-ids
+    command: ["/src/main.liq"]
+    ports: ["1234:1234"]
