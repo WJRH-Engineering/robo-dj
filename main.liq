@@ -49,4 +49,4 @@ radio = switch([
 	({true}, programming)
 ])
 
-stream_to(mount="robo-dj", mksafe(radio))
+stream_to(mount="RoboDJ", mksafe(radio))
