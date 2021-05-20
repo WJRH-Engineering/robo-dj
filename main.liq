@@ -14,7 +14,7 @@ config_set("output.server", "api.wjrh.org")
 config_set("output.port", "8000")
 config_set("description", "WJRH Robotic Disc Jockey")
 
-randomized_playlist = playlist(mode = 'randomized', reload=1, reload_mode = 'rounds')
+randomized_playlist = playlist(mode = 'randomize', reload=1, reload_mode = 'rounds')
 
 stream_to = output.icecast(
 	%mp3,
