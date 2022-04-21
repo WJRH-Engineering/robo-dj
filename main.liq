@@ -35,8 +35,8 @@ station_id_times = { 0m or 15m or 30m or 45m }
 latch_set_condition := station_id_times
 
 # reset the station id latch every time an id is played
-# station_ids.on_track(fun(_) -> latch_reset()) -- This is what the syntax changes to in the development branch of liquidsoap
-station_ids = on_track(fun(_) -> latch_reset(), station_ids)
+station_ids.on_track(fun(_) -> latch_reset()) # -- This is what the syntax changes to in the development branch of liquidsoap
+# station_ids = on_track(fun(_) -> latch_reset(), station_ids)
 latch_begin()
 
 register_latch_commands("station_ids")
